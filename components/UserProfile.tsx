@@ -12,7 +12,7 @@ import { Spinner } from "./Spinner"
 export const UserProfile: FC = () => {
     const session = useStore((state) => state.session)
     const editedProfile = useStore((state) => state.editedProfile)
-    const update = useStore((state) => state.updatedEditedProfile)
+    const update = useStore((state) => state.updateEditedProfile)
     const { data: profile} = useQueryProfile()
     const { updateProfileMutation } = useMutateProfile()
     const { useMutateUploadAvatarImg } = useUploadAvatarImg()
