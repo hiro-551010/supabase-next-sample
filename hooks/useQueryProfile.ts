@@ -7,7 +7,7 @@ import { useMutateProfile } from './useMutateProfile'
 export const useQueryProfile = () => {
     const session = useStore((state) => state.session)
     const editedProfile = useStore((state) => state.editedProfile)
-    const update = useStore((state) => state.updatedEditedProfile)
+    const update = useStore((state) => state.updateEditedProfile)
     const { createProfileMutation } = useMutateProfile()
     const getProfile = async () => {
         const { data, error, status } = await supabase

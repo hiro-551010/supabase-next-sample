@@ -5,7 +5,7 @@ import useStore from '../store'
 
 export const useUploadAvatarImg = () => {
     const editedProfile = useStore((state) => state.editedProfile)
-    const updateProfile = useStore((state) => state.updatedEditedProfile)
+    const updateProfile = useStore((state) => state.updateEditedProfile)
     const useMutateUploadAvatarImg = useMutation(
         async (e: ChangeEvent<HTMLInputElement>) => {
             if (!e.target.files || e.target.files.length === 0) {
