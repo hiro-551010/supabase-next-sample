@@ -35,12 +35,12 @@ export const UserProfile: FC = () => {
             <p className="mb-4">{profile?.username}</p>
             {profile?.created_at && (
                 <p className="my-1 test-sm">
-                    {format(new Date(profile.created_at), 'yyyy-mm-dd HH:mm:ss')}
+                    {format(new Date(profile.created_at), 'yyyy-MM-dd HH:mm:ss')}
                 </p>
             )}
             {profile?.updated_at && (
                 <p className="test-sm">
-                    {format(new Date(profile.updated_at), 'yyyy-mm-dd HH:mm:ss')}
+                    {format(new Date(profile.updated_at), 'yyyy-MM-dd HH:mm:ss')}
                 </p>
             )}
             <p className="mt-4">Username</p>
@@ -59,35 +59,35 @@ export const UserProfile: FC = () => {
             />
             <button
                 className={`my-5 rounded ${
-                    updateProfileMutation.isLoading || !editedProfile.username
-                        ? 'bg-gray-400'
-                        : 'bg-indigo-600'
-                } px-3 py-2 test-sm fod-medium text-white`}
+                updateProfileMutation.isLoading || !editedProfile.username
+                    ? 'bg-gray-400'
+                    : 'bg-indigo-600'
+                } px-3 py-2 text-sm font-medium text-white`}
                 onClick={updateProfile}
                 disabled={updateProfileMutation.isLoading || !editedProfile.username}
             >
-                {updateProfileMutation.isLoading ? 'Loading ...' : 'update'}
+                {updateProfileMutation.isLoading ? 'Loading ...' : 'Update'}
             </button>
             {avatarUrl && (
                 <Image
-                    src={avatarUrl}
-                    alt="Avatar"
-                    className="rounded-full"
-                    width={150}
-                    height={150}
+                src={avatarUrl}
+                alt="Avatar"
+                className="rounded-full"
+                width={150}
+                height={150}
                 />
             )}
             {isLoading && <Spinner />}
             <div className="flex justify-center">
                 <label htmlFor="avatar">
-                    <CameraIcon className="my-3 h-7 w-7 cursor-pointer text-gray-500"/>
+                <CameraIcon className="my-3 h-7 w-7 cursor-pointer text-gray-500" />
                 </label>
                 <input
-                    className="hidden"
-                    type="text"
-                    id="avatar"
-                    accept="image/*"
-                    onChange={(e) => useMutateUploadAvatarImg.mutate(e)}
+                className="hidden"
+                type="file"
+                id="avatar"
+                accept="image/*"
+                onChange={(e) => useMutateUploadAvatarImg.mutate(e)}
                 />
             </div>
         </>

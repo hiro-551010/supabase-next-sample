@@ -4,11 +4,18 @@ import { LogoutIcon, ExclamationCircleIcon } from '@heroicons/react/solid'
 import { supabase } from '../utils/supabase'
 import { Spinner } from './Spinner'
 import { UserProfile } from './UserProfile'
+import { useQueryClient } from 'react-query'
+import useStore from '../store'
 
 export const DashBoard: FC = () => {
     // supabaseのAPIを使用してログアウトする関数
+    const queryClient = useQueryClient()
+    const resetProfile = useStore((state) => state.resetEditedProfile)
     const signOut = () => {
+        resetProfile()
         supabase.auth.signOut()
+        // キャッシュ削除
+        queryClient.removeQueries(['profile'])
     }
 
     return (
